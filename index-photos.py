@@ -16,7 +16,7 @@ rekognition = boto3.client("rekognition", region_name = "us-east-1")
 
 def lambda_handler(event, context):
 
-    print("Adding code pipeline")
+    print("Adding code pipeline. Adding more add statements")
     headers = { "Content-Type": "application/json" }    
 
     # TODO implement
