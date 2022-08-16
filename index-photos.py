@@ -18,6 +18,7 @@ def lambda_handler(event, context):
 
     print("Adding code pipeline. Adding more add statements")
     print("Adding code pipeline. Adding more add statements")
+    print("Adding code pipeline. Adding more add statements")
     headers = { "Content-Type": "application/json" }    
 
     # TODO implement
