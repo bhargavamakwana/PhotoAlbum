@@ -12,7 +12,7 @@
 body {
     font-family: "Gill Sans", sans-serif;
     color: black;
-    background-color: #FF8C32;
+    background-color: #7332ff;
 }
 
 .container-fluid {
@@ -171,7 +171,7 @@ body {
  .button-22 {
    align-items: center;
    appearance: button;
-   background-color: #0276FF;
+   background-color: #ff9602;
    border-radius: 8px;
    border-style: none;
    box-shadow: rgba(255, 255, 255, 0.26) 0 1px 2px inset;
