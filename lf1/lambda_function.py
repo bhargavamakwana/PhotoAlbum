@@ -11,7 +11,7 @@ ES_HOST = 'https://search-photos-s2jfh5xpge7nleokbrq2kn4r5m.us-east-1.es.amazona
 REGION = 'us-east-1a'
 
 
-
+s3 = boto3.client('s3')
 rekognition = boto3.client("rekognition", region_name = "us-east-1")
 
 def lambda_handler(event, context):
@@ -20,11 +20,16 @@ def lambda_handler(event, context):
     headers = { "Content-Type": "application/json" }    
 
     # TODO implement
+    custom_labels = None
     for record in event['Records']:
     # record = event['Records'][0]['s3']
         bucket = record['s3']['bucket']['name']
         photo = record['s3']['object']['key']
-    
+        try:
+            custom_labels = s3.head_object(Bucket=bucket, Key=photo)["ResponseMetadata"]["HTTPHeaders"]["x-amz-meta-customlabels"]
+            print("Custom labels", custom_labels)
+        except Exception as e:
+            print(e)
         res = rekognition.detect_labels(
             Image={'S3Object': {'Bucket': bucket, 'Name': photo}},
             MaxLabels=10)
@@ -39,7 +44,8 @@ def lambda_handler(event, context):
         
         for label in res['Labels']:
             obj["labels"].append(label['Name'].lower())
-        
+        for elm in custom_labels.split(","):
+            obj["labels"].append(elm.strip().lower())
         
         print(obj)
         # url = get_url('photos')    
@@ -53,3 +59,4 @@ def lambda_handler(event, context):
         },
         'body': json.dumps("Image labels have been successfully detected!")
     }
+
