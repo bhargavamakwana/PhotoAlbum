@@ -15,6 +15,7 @@ REGION = 'us-east-1a'
 rekognition = boto3.client("rekognition", region_name = "us-east-1")
 
 def lambda_handler(event, context):
+    print("Integrating code to CodeBuild!")
 
     headers = { "Content-Type": "application/json" }    
 
