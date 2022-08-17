@@ -121,7 +121,7 @@ function uploadPhoto() {
         var body = data;
         var params = {
         key: file.name,
-            bucket: 'b2-photos-album',
+            bucket: 'b2rekog',
             'Content-Type': file.type,
             'x-amz-meta-customLabels': custom_labels.value,
             Accept: 'image/*',
@@ -166,7 +166,7 @@ function uploadPhoto() {
         xhr.withCredentials = false;
         xhr.open("PUT", "https://cdr8277ckd.execute-api.us-east-1.amazonaws.com/beta/upload/b2rekog/"+data.name);
         xhr.setRequestHeader("Content-Type", data.type);
-        xhr.setRequestHeader("x-api-key","FRRZrspOs61U3Wm0eDxSh3zIOWuzdiBLaEVH002P");
+        xhr.setRequestHeader("x-api-key","bGntpPrpPn41PY7qKISdR93KkhXlJR9i3vQxiUet");
         xhr.setRequestHeader("x-amz-meta-customLabels", custom_labels.value);
         xhr.setRequestHeader("Access-Control-Allow-Origin", '*');
         xhr.send(data);
